@@ -1,0 +1,13 @@
+<div class="container card mt-2 p-2">
+    <div class="text-center h2 bg-secondary rounded p-1">Editing Note</div>
+
+    <%= render "form", note: @note %>
+
+    <br>
+
+    <div class="d-flex justify-content-between">
+      <%= link_to "Show", @note,class: 'btn btn-primary' %> 
+      <%= link_to "Back", notes_path,class: 'btn btn-primary' %>
+    </div>
+</div>
+

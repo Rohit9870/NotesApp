@@ -1,0 +1,46 @@
+<div class="container p-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4 card p-4 shadow-lg">
+      <h2 class="text-center mb-4">Log in</h2>
+
+      <% if flash[:alert] %>
+        <div class="alert alert-danger">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-horizontal" }) do |f| %>
+        <div class="form-group">
+          <%= f.label :email, class: "control-label" %>
+          <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
+        </div>
+
+        <div class="form-group mt-2">
+          <%= f.label :password, class: "control-label" %>
+          <div class="input-group">
+            <%= f.password_field :password, class: "form-control", autocomplete: "current-password", id: "pass_log_id" %>
+            <span class="input-group-text">
+              <i class="fas fa-eye toggle-password" style="cursor: pointer;"></i>
+            </span>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="form-check mb-3 mt-2">
+            <%= f.check_box :remember_me, class: "form-check-input" %>
+            <%= f.label :remember_me, class: "form-check-label" %>
+          </div>
+        <% end %>
+
+        <div class="d-grid mt-4">
+          <%= f.submit "Log in", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+
+      <div class="text-center d-flex justify-content-between mt-3">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
